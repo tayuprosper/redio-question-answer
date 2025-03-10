@@ -1,0 +1,48 @@
+@import "tailwindcss";
+/* @import url("https://fonts.googleapis.com/css2?family=MD+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100...1000&display=swap"); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+.form input{
+  font-family: 'Montserrat',serif;
+  border: 1px solid grey;
+  border-radius: 7px;
+  margin: 20px;
+  padding: 10px;
+  width: 40%;
+}
+
+.form input:focus, .search input:focus{
+  outline: none;
+}
+
+.form button{
+  background-color: rgb(42, 90, 221);
+  padding: 10px;
+  border-radius: 7px;
+  width: 20%;
+}
+.active {
+  background-color: rgb(5, 3, 37);
+}
+body{
+  padding-left: 6em;
+  padding-right: 6em;
+}
+
+@media (width >= 96rem) {
+  body{
+    padding-left: 15em;
+    padding-right: 15em;
+  }
+}
+form textarea{
+  border: 1px solid black;
+  border-radius: 7px;
+  width: 40%;
+  margin-bottom: 2em;
+  padding: 10px;
+}
+textarea:focus{
+  outline: none;
+}
