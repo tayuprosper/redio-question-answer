@@ -17,5 +17,5 @@ urlpatterns = [
     path('user/profile', views.dashboard),
     path('user/data', views.GetUser),
     path('question/edit', views.EditQuestion),
-
+    path('user/editprofile', views.EditProfile),
 ]

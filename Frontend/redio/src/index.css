@@ -1,9 +1,8 @@
 @import "tailwindcss";
-/* @import url("https://fonts.googleapis.com/css2?family=MD+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100...1000&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=MD+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100...1000&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import "tailwindcss";
 
-.form input{
+.form input, .editprofile input{
   font-family: 'Montserrat',serif;
   border: 1px solid grey;
   border-radius: 7px;
@@ -12,11 +11,11 @@
   width: 40%;
 }
 
-.form input:focus, .search input:focus{
+.form input:focus, .search input:focus, .editprofile  input{
   outline: none;
 }
 
-.form button{
+.form button, .editprofile button{
   background-color: rgb(42, 90, 221);
   padding: 10px;
   border-radius: 7px;
@@ -27,6 +26,7 @@
 }
 body{
   padding-left: 6em;
+  font-family: "Montserrat", sans-serif;
   padding-right: 6em;
 }
 

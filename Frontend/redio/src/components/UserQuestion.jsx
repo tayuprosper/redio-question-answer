@@ -6,8 +6,7 @@ function UserQuestion( {info, index, setIsEditing, setCodeForEdit, setTitleForEd
         setCodeForEdit(code_sample);
         setIdForEdit(pk);
         setTitleForEdit(title);
-        setIsEditing(true);
-        console.log("everything set")
+        setIsEditing(true)
     }
 
     const copyCode = ()=>{

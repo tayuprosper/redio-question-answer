@@ -6,7 +6,9 @@ function DeleteWarning({setDeleting, id}) {
         const res = await DeleteQuestion(id)
         if (res){
             setDeleting(false)
-            navigate("/")
+            navigate("/dashboard")
+        }else{
+            setDeleting(false)
         }
     }
     const closeModal =()=>{

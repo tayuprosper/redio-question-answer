@@ -8,7 +8,6 @@ import ProfileLoader from "./components/ProfileLoader";
 import { Link } from "react-router-dom";
 import EditPopUp from "./components/EditPopUp";
 function Dashboard() {
-
     const [titleForEdit, setTitleForEdit] = useState('')
     const [codeForEdit, setCodeForEdit] = useState('')
     const [idForEdit, setIdForEdit] = useState('')
@@ -40,6 +39,10 @@ function Dashboard() {
 
     }
 
+    const gotoEditprofile = ()=>{
+        console.log(user[0])
+        navigate("/editprofile", {state: user[0]})
+    }
 
 
     // useEffect(() => {
@@ -77,9 +80,7 @@ function Dashboard() {
                                 <Link to="/logout">
                                     <button className="bg-transparent rounded-lg border-2 text-slate-900 font-bold p-3">Logout</button>
                                 </Link>
-                                <Link to="/editprofile">
-                                    <button className="bg-slate-900 rounded-lg border-2 border-slate-900 text-white font-bold p-3">Edit Profile</button>
-                                </Link>
+                                    <button className="bg-slate-900 rounded-lg border-2 border-slate-900 text-white font-bold p-3" onClick={gotoEditprofile}>Edit Profile</button>
                             </div>
 
                             <div className="bio font-bold text-2xl mt-5">

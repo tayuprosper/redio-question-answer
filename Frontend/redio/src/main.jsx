@@ -9,7 +9,7 @@ import LoginPage from './LoginPage.jsx'
 import SignUp from './SignUp.jsx'
 import AskQuestion from './AskQuestion.jsx'
 import ProtectedRoute from './ProtectedRount.jsx'
-
+import EditProfile from './EditProfile.jsx'
 const router = createBrowserRouter([
   {
     path: "/", element: <App/>
@@ -25,6 +25,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/askquestion", element:<ProtectedRoute children={<AskQuestion/>}/>
+  },
+  {
+    path: "/editprofile", element: <EditProfile/>
   },
   {
     path: "*", element: <NotFound/>

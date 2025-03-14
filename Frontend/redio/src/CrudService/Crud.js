@@ -134,12 +134,12 @@ export const EditPost = async (pk,code_sample,title)=>{
         refreshToken();
         getDashboard()
     } else if (!response.ok) {
-        console.log("Error: ", response.statusText);
+        //console.log("Error: ", response.statusText);
         return false
     }
 
     const data = await response.json()
-    console.log(data);
+   // console.log(data);
     return true;
 }
 
@@ -155,17 +155,17 @@ export const DeleteQuestion = async (pk)=>{
         body: JSON.stringify({"pk": pk}),
     }
 
-    const response = fetch(`${BASE_URL}${endpoint}`, API_OPTIONS);
+    const response = await fetch(`${BASE_URL}${endpoint}`, API_OPTIONS);
 
     if (response.status == 403) {
         refreshToken();
         getDashboard();
     } else if (!response.ok) {
-        console.log("Error: ", response.statusText);
+        //console.log("Error: ", response.statusText);
         return false
     }
 
     const data = await response.json()
-    console.log(data);
+    //console.log(data);
     return true;
 }

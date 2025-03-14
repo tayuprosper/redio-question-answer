@@ -1,5 +1,7 @@
 
 const API_URL = "http://127.0.0.1:8000"
+import { useNavigate } from "react-router-dom";
+
 
 export const register = async (username, first_name, last_name, email, password)=>{
     const meta = {
@@ -61,10 +63,14 @@ export const refreshToken = async () => {
         body:JSON.stringify({"refresh": token})
     }
     const endpoint = '/auth/tokenrefresh/'
-    const response = await fetch(`${API_URL}/auth/tokenrefresh/`,API_OPTIONS)
+    const response = await fetch(`${API_URL}${endpoint}`,API_OPTIONS)
 
 
-    if (!response.ok) return null;
+    if (!response.ok){
+        window.location.href = "/login"
+        logout();
+        window.dwes
+    };
 
     const data = await response.json()
     localStorage.setItem("accessToken", data.access)
@@ -74,6 +80,40 @@ export const refreshToken = async () => {
     return null;
 }
 
+}
+
+
+export const editProfile = async (username, first_name, last_name, email, ) =>{
+    const endpoint = "/user/editprofile";
+    const API_OPTIONS = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${getAccessToken()}`,
+        },
+        body: JSON.stringify({
+            "last_name": last_name,
+            "first_name": first_name,
+            "email": email,
+            "username": username,
+        })
+    }
+
+
+        const response = await fetch(`${API_URL}${endpoint}`, API_OPTIONS);
+    
+        if (response.status == 403) {
+            refreshToken();
+            editProfile(username, first_name,  last_name, email);
+        } else
+        if (!response.ok) {
+            console.log("Error: ", response.statusText);
+            return false
+        }  else {
+        const data = await response.json()
+        console.log(data);
+        return true;
+    }
 }
 
 

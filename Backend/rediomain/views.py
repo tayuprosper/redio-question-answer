@@ -162,7 +162,7 @@ def removeUpvote(req,aid,uid):
     return HttpResponse({'success':'unlike'}, status=status.HTTP_202_ACCEPTED)
 
 
-#to be tested DO NOT USE!!
+#tested and working!!
 @api_view(['DELETE'])
 def removeQuestion(req):
     user = None
@@ -276,3 +276,27 @@ def EditQuestion(req):
             return JsonResponse({"Error": "Question does not exist"}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return JsonResponse({"Error": "Invalid user"}, status=401)
+
+
+@api_view(["PATCH"])
+def EditProfile(req):
+    user = None
+    auth_res = JWTAuthentication().authenticate(req)
+    user, _ = auth_res
+    if user and not isinstance(user, AnonymousUser):
+        try:
+            print("user exists")
+            user = User.objects.get(id=user.id)
+            user.username = req.data.get("username")
+            user.first_name = req.data.get("first_name")
+            user.email = req.data.get("email")
+            user.last_name = req.data.get("last_name")
+            user.save()
+            user_serializer = serializers.serialize('json', [user])
+            return HttpResponse(user_serializer, content_type='application/json',  status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            print("user does not exist")
+            return JsonResponse({"Error": "User does not exist"}, status=401)
+    else:
+        print("user not logged in")
+        return JsonResponse({"Error": "User does not exist"}, status=status.HTTP_403_FORBIDDEN)
