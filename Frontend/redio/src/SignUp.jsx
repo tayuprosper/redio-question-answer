@@ -30,16 +30,16 @@ function SignUp() {
         {
             formEror && <p className="text-red">{formEror}</p>
         }
-            <form action="" className="flex flex-col items-center text-center w-full">
-                <h2 className="font-bold text-3xl">SIGN UP</h2>
+            <form action="" className="flex flex-col items-center text-center w-full shadow-2xl py-10 rounded-xl">
+                <h2 className="font-bold text-3xl">Signup</h2>
                 <input type="text" name="username" id="" placeholder="username" value={username} onChange={(e)=> setUsername(e.target.value)} />
-                <input type="text" name="first_name" id="" placeholder="first name" value={firstname} onChange={(e)=> setFirstname(e.target.value)} />
-                <input type="text" name="last_name" id="" placeholder="last name" value={lastname} onChange={(e)=> setLastname(e.target.value)} />
-                <input type="email" name="email" id="" placeholder="Enter email" value={email} onChange={(e)=> setEmail(e.target.value)} />
-                <input type="password" name="password" id="" placeholder="Enter password" value={password} onChange={(e)=> setPassword(e.target.value)} />
-                <input type="password" name="password" id="" placeholder="Enter password" value={passwordC} onChange={(e)=> setPasswordC(e.target.value)} />
-                <button type="submit" onClick={handleSignup} className="font-bold text-white">SIGN UP</button>
-                <p className="mt-6">Have an acount already? <Link to={"/login"}><span className="text-blue-700 font-bold cursor-pointer"> log in now</span></Link></p>
+                <input type="text" name="first_name" id="" placeholder="First name" value={firstname} onChange={(e)=> setFirstname(e.target.value)} />
+                <input type="text" name="last_name" id="" placeholder="Last name" value={lastname} onChange={(e)=> setLastname(e.target.value)} />
+                <input type="email" name="email" id="" placeholder="Email" value={email} onChange={(e)=> setEmail(e.target.value)} />
+                <input type="password" name="password" id="" placeholder="Password" value={password} onChange={(e)=> setPassword(e.target.value)} />
+                <input type="password" name="password" id="" placeholder="Confirm Password" value={passwordC} onChange={(e)=> setPasswordC(e.target.value)} />
+                <button type="submit" onClick={handleSignup} className="font-bold text-white">Sign up</button>
+                <p className="mt-6 font-bold">Have an acount already? <Link to={"/login"}><span className="text-blue-700 font-bold cursor-pointer"> log in now</span></Link></p>
             </form>
         </div>
     </div>

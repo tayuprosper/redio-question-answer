@@ -6,6 +6,8 @@ function Profile({ info }) {
     const navigator = useNavigate()
     const [answer,setAnswer] = useState('')
     const [codeSample, setCodeSample] = useState('')
+    const [titleToAnswer, seTitleToAnswer] = useState('')
+    const [codeToAnswer, setCodeToAnswer] = useState('')
     const copyCode = ()=>{
         navigator.clipboard.writeText(info.code_sample)
         .then(()=>{
@@ -16,6 +18,13 @@ function Profile({ info }) {
         })
     }
 
+
+    const goToCodeAnswer = (title, codeSample)=>{
+        localStorage.setItem("titleToAnswer",title);
+        localStorage.setItem("codeToAnswer",codeSample);
+        navigator("/answercode");
+    }
+
     const handleComment = async ()=>{
         const res = await putComment(answer,codeSample,info.id)
         if (res){
@@ -23,7 +32,7 @@ function Profile({ info }) {
         }
      }
     return (
-        <div className="post gap-4">
+        <div className="post gap-4 bg-slate-200 py-7 px-5 rounded-sm">
             <div className="profile font-bold flex items-center gap-3">
                 <div className="img rounded-full">
                     <img src="https://picsum.photos/200/300" className="rounded-full w-20 h-20" alt="profile" />
@@ -31,7 +40,7 @@ function Profile({ info }) {
                 <div className="info flex flex-col text-xl gap-1">
                     <div className="infonames flex gap-2 ">
                         <div className="username">
-                            {info.author.username}
+                            {info.author.first_name}
                         </div>
                         <div className="date">
                             {info.author.last_name}
@@ -41,7 +50,7 @@ function Profile({ info }) {
                 </div>
             </div>
 
-            <div className="content bg-slate-200 rounded-sm p-4 mt-5">
+            <div className="content rounded-sm p-4 mt-5">
                 <div className="text font-bold flex p-2 justify-between">
                 <p>{info.content}</p>
                 {
@@ -66,16 +75,15 @@ function Profile({ info }) {
                             ))
                             
                         }
-                        <p>Upvotes</p>
                     </div>
                     <div className="answers">
                     <p className="answtxt">1.3k</p>
                     <p>Answers</p>
                     </div>
-                    <div className="flex items-center w-[70%]">
+                    <div className="flex items-center w-[70%] gap-4">
                         <AnswerQuestion answer={answer} setAnswer={setAnswer}/>
-                        <img src="send.svg" alt="" onClick={handleComment} className="h-10"/>
-                        <img src="code.svg" alt="" className="h-10"/>
+                        <img src="send.svg" alt="" onClick={handleComment} className="h-7"/>
+                        <img src="code.svg" alt="" onClick={()=>goToCodeAnswer(info.code_sample, info.content)} className="h-7"/>
                     </div>
                 </div>
             </div>
@@ -88,7 +96,7 @@ function AnswerQuestion({answer, setAnswer}) {
     return ( 
         <div className="w-[100%]">
         <div className="bg-slate-200 w-[100%] items-center">
-            <input type="text" className="w-[100%] border-1 rounded-sm p-3" placeholder="Share your thoughts" value={answer} onChange={(event) => setAnswer(event.target.value)}/>
+            <input type="text" className="w-[100%] border-1 h-[4vh] rounded-sm p-3" placeholder="Share your thoughts" value={answer} onChange={(event) => setAnswer(event.target.value)}/>
         </div>
         </div>
      );

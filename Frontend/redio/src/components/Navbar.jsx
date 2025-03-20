@@ -15,7 +15,7 @@ function Navbar({ searchTerm, setSearchTerm }) {
                         token ?
                             <div className="pro flex justify-between items-center gap-5">
                                 <Link to="/login">
-                                <div className="login border-1 p-2 rounded-sm font-bold" onClick={logout}>LOGOUT</div>
+                                <div className="login border-1 p-2 rounded-sm font-bold" onClick={logout}>Logout</div>
                                 </Link>
                                 <Link to="/dashboard">
                                 <img src="https://picsum.photos/200/300" className="h-10 w-10 rounded-full" alt="profile" />
@@ -24,10 +24,10 @@ function Navbar({ searchTerm, setSearchTerm }) {
                             :
                             <>
                                 <Link to={"/"}>
-                                    <div className="login border-1 p-2 rounded-sm font-bold">LOGIN</div>
+                                    <div className="login border-1 p-2 rounded-sm font-bold">login</div>
                                 </Link>
                                 <Link to={"/login"}>
-                                    <div className="signu bg-slate-900 rounded-sm text-white p-2 border-1 font-bold">SIGNUP</div>
+                                    <div className="signup bg-slate-900 rounded-sm text-white p-2 border-1 font-bold">Sinup</div>
                                 </Link>
                               </>
                     }

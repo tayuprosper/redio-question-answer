@@ -10,6 +10,7 @@ import SignUp from './SignUp.jsx'
 import AskQuestion from './AskQuestion.jsx'
 import ProtectedRoute from './ProtectedRount.jsx'
 import EditProfile from './EditProfile.jsx'
+import AddCodeToAnswer from './components/AddCodeToComent.jsx'
 const router = createBrowserRouter([
   {
     path: "/", element: <App/>
@@ -28,6 +29,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/editprofile", element: <EditProfile/>
+  },
+  {
+    path: "/answercode", element: <AddCodeToAnswer/>
   },
   {
     path: "*", element: <NotFound/>

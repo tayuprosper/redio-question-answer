@@ -5,6 +5,7 @@ import QuestionLoader from "./components/QuestionLoader";
 import Navbar from "./components/Navbar";
 import Qinfos from "./components/Qinfos";
 import { login, getAccessToken, refreshToken } from "./AuthService/AuthService";
+import Footer from "./components/Footer";
 const VERSION = 2;
 const endp = ""
 const API_BASE_URl = `http://127.0.0.1:8000/`
@@ -73,6 +74,7 @@ function App() {
     }, [])
 
     return (
+        <>
         <main className="">
             <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
             <Qinfos />
@@ -90,13 +92,15 @@ function App() {
                         </>
                         :
                         <>
-                            {isAuth && <p className="text-black">You are authenticated </p>}
+                            
                             <Question data={movieList} />
                         </>
 
             }
-
+        
         </main>
+        <Footer/>
+        </>
     );
 }
 

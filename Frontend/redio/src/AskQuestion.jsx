@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Loading from "./components/Loading";
 import { postquestion } from "./CrudService/Crud";
 import { Navigate, useNavigate } from "react-router-dom";
+import Footer from "./components/Footer";
 function AskQuestion() {
     const navigate = useNavigate()
     const [posted, setposted] = useState(false)
@@ -34,12 +35,13 @@ function AskQuestion() {
         
             <form action="" className="flex flex-col items-center text-center w-full">
                 <h2 className="font-bold text-3xl">Ask Your Question</h2>
-                <input type="text" name="username" id="" placeholder="Enter username" value={desc} onChange={(e)=> setDesc(e.target.value)} />
-                <textarea type="password" name="password" id="" placeholder="Enter password" value={code} onChange={(e)=> setCode(e.target.value)} />
+                <input type="text" name="Description" id="" placeholder="Problem description" value={desc} onChange={(e)=> setDesc(e.target.value)} />
+                <textarea type="text" name="code-content" id="" placeholder="code sample - optional" value={code} onChange={(e)=> setCode(e.target.value)} ><code></code></textarea>
                 <button type="submit" className="font-bold text-white" onClick={postQ}>Post Question</button>
             </form>
         </div>
     </div>
+    <Footer/>
         </>
         
     );
